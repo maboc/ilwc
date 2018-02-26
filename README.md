@@ -1,2 +1,4 @@
 # ilwc
-In Love eith Christ
+In Love With Christ
+
+My attempt of spreading the Gospel :-)
