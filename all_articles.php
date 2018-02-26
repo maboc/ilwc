@@ -1,5 +1,6 @@
 <?php
   include 'sessionstuff.php';
+  include_once 'logging.php';
   magdit(1);
 
   if(isset($_POST["delete_button"])) {
@@ -8,14 +9,19 @@
       die("Foute boel" . mysqli_error($con));
     }
 
-    $sql="delete from comments where article_id='" . $_POST["id"] . "'";
-    mysqli_query($con, $sql);
+    $aid=$_POST["id"];
 
-    $sql="delete from history where article_id='" . $_POST["id"] . "'";
-    mysqli_query($con, $sql);
+    do_log_no_aid("delete comments for article " . $aid);
+    $sql="delete from comments where article_id='" . $aid . "'";
+    $r=mysqli_query($con, $sql);
 
-    $sql="delete from articles where id='" . $_POST["id"] . "'";
-    mysqli_query($con, $sql);
+    do_log_no_aid("delete history for article " . $aid);
+    $sql="delete from history where article_id='" . $aid . "'";
+    $r=mysqli_query($con, $sql);
+    
+    do_log_no_aid("delete article " . $aid);
+    $sql="delete from articles where id='" . $aid . "'";
+    $r=mysqli_query($con, $sql);
 
     mysqli_close($con);
   }
@@ -32,7 +38,6 @@
 <?php
 
   include 'menu.php';
-  include_once 'logging.php';
   do_log("alle artikelen (editor)");
 ?>
     <table >
