@@ -10,6 +10,8 @@ include 'sessionstuff.php';
   </head>
   <body >
 <?php
+  magdit(2);
+
   include 'menu.php';
   include_once 'logging.php';
   do_log("alle artikelen (editor)");
