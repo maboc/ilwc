@@ -1,5 +1,6 @@
 <?php
-include 'sessionstuff.php';
+  include 'sessionstuff.php';
+  magdit(1);
 ?>
 
 <?php

@@ -1,5 +1,6 @@
 <?php
-include 'sessionstuff.php';
+  include 'sessionstuff.php';
+  magdit(1);
 ?>
 
 <html>
@@ -10,7 +11,6 @@ include 'sessionstuff.php';
   </head>
   <body >
 <?php
-  magdit(2);
 
   include 'menu.php';
   include_once 'logging.php';

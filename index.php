@@ -1,5 +1,6 @@
 <?php
-include 'sessionstuff.php';
+  include 'sessionstuff.php';
+  magdit(0);
 ?>
 
 <html>
@@ -10,6 +11,8 @@ include 'sessionstuff.php';
   </head>
   <body >
 <?php
+  magdit(0);
+
   include 'menu.php';
   include_once 'logging.php';
   do_log("index opvrage");
