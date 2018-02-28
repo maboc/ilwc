@@ -21,7 +21,6 @@
     $sql .="        '" . $_POST["zichtbaar_van_veld"] . "',";
     $sql .="        '" . $_POST["zichtbaar_tot_veld"] . "')";
 
-echo $sql;
 
     $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc");
     if(! $con){
