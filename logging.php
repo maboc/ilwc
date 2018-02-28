@@ -61,4 +61,26 @@
     mysqli_close($con);
 
   }
+
+  function do_log_no_uid($textje){
+    $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc");
+    if(! $con){
+      die("Foute boel" . mysqli_error($con));
+    }
+
+    $client  = isset($_SERVER['HTTP_CLIENT_IP'])?$_SERVER['HTTP_CLIENT_IP']:"";
+    $forward = isset($_SERVER['HTTP_X_FORWARDED_FOR'])?$_SERVER['HTTP_X_FORWARDED_FOR']:"";
+    $remote  = isset($_SERVER['REMOTE_ADDR'])?$_SERVER['REMOTE_ADDR']:"";
+
+    $ip=$client . "-" . $forward . "-" . $remote;
+
+    $sql="insert into history (what, address, wanneer)
+                        values ('" . $textje . "', '". $ip . "', now())";
+
+    $result=mysqli_query($con, $sql);
+
+    mysqli_close($con);
+
+  }
+
 ?>
