@@ -34,7 +34,7 @@
                    on a.author_id=u.id
         where    a.published=True
                  and now() between a.zichtbaar_van and a.zichtbaar_tot
-        order by creation_date desc";
+        order by zichtbaar_van desc";
   $result=mysqli_query($con, $sql);
 
   while ($row=mysqli_fetch_row($result)){
