@@ -53,7 +53,9 @@
                  u.real_name,
                  a.published, 
                  a.visits,
-                 c.aantal 
+                 c.aantal,
+                 a.zichtbaar_van,
+                 a.zichtbaar_tot  
         from     articles a
                    left join users u
                      on a.author_id=u.id
@@ -78,8 +80,10 @@
               <td>%s</td>
               <td>%s</td>
               <td>%s</td>
+              <td>%s</td>
+              <td>%s</td>
               <td><input type=submit name=\"delete_button\" value=\"Delete\"</td>
-           </tr>", $row[0], $row[0],$row[1],$row[2],$row[3],$row[4],$row[5],$row[6]); 
+           </tr>", $row[0], $row[0],$row[1],$row[2],$row[3],$row[4],$row[5],$row[6],$row[7],$row[8]); 
     printf("</form>");
   }
 
