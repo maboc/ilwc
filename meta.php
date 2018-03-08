@@ -63,6 +63,34 @@
   }
   printf("</table>");
 
+  $sql="select a.h, 
+               round(100*a.n/b.n), 
+               rpad('',round(100*a.n/b.n),'|') 
+        from   (
+                 select hour(wanneer) h, 
+                        count(*) n 
+                 from   history 
+                 where  not(wanneer is null) 
+                 group by hour(wanneer) 
+                 order by hour(wanneer)
+               ) a, 
+               (
+                 select count(*) n 
+                 from   history 
+                 where  not(wanneer is null)
+               ) b";
+  $result=mysqli_query($con, $sql);
+
+  printf("Bewegingen per uur");
+  printf("<table>");
+  while($row=mysqli_fetch_row($result)) {
+    printf("<tr><td>%s</td><td>%s</td><td>%s</td></tr>", $row[0], $row[1], $row[2]);
+  }
+  printf("</table>");
+
+
+
+
   printf("<br><br>");
   $sql="select   address, 
                  count(*) n 
