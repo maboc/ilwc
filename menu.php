@@ -94,6 +94,7 @@ if ((isset($_SESSION["level"])) && ($_SESSION["level"]>=2)){
 <div style="background-color:lightpink;">
   <a href="history.php">History</a>
   <a href="users.php">Users</a>
+  <a href="meta.php">Meta</a>
 </div>
 <?php
 }
