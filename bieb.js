@@ -1,0 +1,3 @@
+function SubmitSearch(){
+ alert("bla");
+}

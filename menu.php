@@ -53,7 +53,17 @@
 
 <!-- menu voor iedereen -->
 <div style="background-color:lightblue;">
-  <a href="http://www.ilwc.nl/">ILWC</a>
+  <table width=100%>
+    <tr>
+      <td valign=top>
+        <a href="http://www.ilwc.nl/">ILWC</a>
+      </td>
+      <td align=right>
+        <form action="search.php" method="post">
+          <input type=text name=zoek_veld value="Zoek">
+        </form> 
+      </td>
+      <td align=right>
 <?php
   if(! isset($_SESSION["session"])){
 ?>
@@ -67,12 +77,17 @@
   } else {
     printf("Welcome %s", $_SESSION["user"] . "(" . $_SESSION["role_name"] . ")");
 ?>
+</td>
+<td align=right>
 <form action="" method="post">
   <input type="submit" name="logout" value="logout"/>
 </form>
 <?php
   }
 ?>
+</td>
+</tr>
+</table>
 </div>
 
 <!-- menu voor editors -->

@@ -16,7 +16,9 @@
 
   include 'menu.php';
   include_once 'logging.php';
-  do_log("index opvrage");
+  $zoeker=$_REQUEST["zoek_veld"];
+  do_log("Search opgeroepen : " . $zoeker);
+
 ?>
     <table align="center" width="40%">
 <?php
@@ -25,23 +27,24 @@
     die("Foute boel" . mysqli_error($con));
   }
 
-  $sql="select   a.id, 
+  $sql="insert into zoekterm (zoekterm) values ('" . $zoeker . "')";
+  $result=mysqli_query($con, $sql);
+
+  $sql="select   a.id,
                  a.title,
-                 a.samenvatting,
-                 a.image,
-                 u.real_name 
+                 a.samenvatting
         from     articles a
-                 left join users u
-                   on a.author_id=u.id
-        where    a.published=True
-                 and now() between a.zichtbaar_van and a.zichtbaar_tot
+        where    a.published=true
+                 and (
+                       (lower(a.samenvatting like lower('%" . $zoeker . "%'))) 
+                       or (lower(a.body like lower('%" . $zoeker . "%'))) 
+                       or (lower(a.title like lower('%" . $zoeker . "%')))
+                     )
         order by zichtbaar_van desc";
   $result=mysqli_query($con, $sql);
 
   while ($row=mysqli_fetch_row($result)){
-    printf("<tr><td><img src=\"%s\" height=\"50px\"/></td><td><a href=detail.php?id=%s>%s<br/>%s<br/>%s</a></td></tr>", $row[3], $row[0] ,$row[0],  $row[1], $row[4]); 
-    printf("<tr><td colspan=\"2\">%s</td></tr>", $row[2]);
-    printf("<tr><td colspan=\"2\">&nbsp;</td></tr>");
+    printf("<tr><td><a href=detail.php?id=%s title=\"%s\">%s</a></td></tr>", $row[0], $row[2], $row[1]); 
   }
 
   mysqli_close($con);
