@@ -42,6 +42,8 @@
   <body >
 <?php
   include 'menu.php';
+
+  if (zichtbaar($aid)){
 ?>
     <table align="center" width="40%">
 <?php
@@ -49,7 +51,6 @@
   if(! $con){
     die("Foute boel" . mysqli_error($con));
   }
-
 
   $sql="select   a.id, 
                  a.title,
@@ -61,7 +62,7 @@
                    on a.author_id=u.id
         where    a.id=$aid
         order by creation_date desc";
- 
+
   $result=mysqli_query($con, $sql);
 
   while ($row=mysqli_fetch_row($result)){
@@ -109,5 +110,11 @@
   } 
 ?>
     </table>
+
+  <?php
+  } else {
+    printf("<b>Dit artikel bestaat niet of is niet zichtbaar</b>");
+  }
+  ?>
   </body>
 </html>
