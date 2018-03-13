@@ -40,7 +40,21 @@
   include 'menu.php';
   do_log("alle artikelen (editor)");
 ?>
-    <table >
+    <table>
+      <thead>
+        <tr>
+          <td>ID</td>
+          <td>Titel</td>
+          <td>Icoon</td>
+          <td>Auteur</td>
+          <td>Published</td>
+          <td>Views</td>
+          <td>Comments</td>
+          <td>Zichtbaar van</td>
+          <td>Zichtbaar tot</td>
+          <td>Acties</td>
+      </tr>
+    </thead>
 <?php
   $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc");
   if(! $con){
