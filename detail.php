@@ -113,6 +113,7 @@
 
   <?php
   } else {
+    do_log("Dit artikel ($aid) bestaat niet of is unpublished");
     printf("<b>Dit artikel bestaat niet of is niet zichtbaar</b>");
   }
   ?>
