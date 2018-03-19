@@ -85,18 +85,19 @@
   $result=mysqli_query($con, $sql);
 
   while ($row=mysqli_fetch_row($result)){
+    $twitter=$row[1];
     printf("<tr><td><img src=\"%s\" height=\"50px\"/></td><td>%s<br/>%s<br/>%s</td></tr>", $row[3], $row[0],  $row[1], $row[4]); 
     printf("<tr><td colspan=\"2\">%s</td></tr>", $row[2]);
   }
-
+ 
   mysqli_close($con);
 
-?>
-    </table>
-    <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=zodan" data-size="small">
-    <br/><br/>
-    <div align="center">
-<?php
+
+  printf("</table>");
+  printf("<a class=\"twitter-share-button\" href=\"https://twitter.com/intent/tweet?text=%s\" data-size=\"small\" />", $twitter);
+  printf("<br/><br/>");
+  printf("<div align=\"center\">");
+
   printf("<form action=\"detail.php\" method=\"post\">", $aid );
   printf("<input type=\"hidden\" name=\"id\" value=\"%s\"/>", $aid);
 ?>
