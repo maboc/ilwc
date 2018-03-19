@@ -21,25 +21,25 @@
       $_SESSION["session"]="yes";
       $_SESSION["user"]=$_REQUEST["loginname"];
 
+      $sql="select lvl,
+                   role_name
+            from   roles r,
+                   user_role ur,
+                   users u
+            where  ur.role_id =r.id
+                   and ur.user_id=u.id
+                   and u.name='" . $_SESSION["user"] . "'";
+      $result=mysqli_query($con, $sql);
+      $row=mysqli_fetch_row($result);
+
+      $_SESSION["level"]=$row[0];
+      $_SESSION["role_name"]=$row[1];
+
       do_log("Geslaagde inlog poging : ". $_SESSION["user"]); 
     } else {
       printf("Helaas...valse bingo");
-      do_log("Mislukte inlog poging : ". $_SESSION["user"]); 
+      do_log("Mislukte inlog poging : ". $_REQUEST["loginname"]); 
     }
-
-    $sql="select lvl,
-                 role_name
-          from   roles r, 
-                 user_role ur, 
-                 users u 
-          where  ur.role_id =r.id 
-                 and ur.user_id=u.id 
-                 and u.name='" . $_SESSION["user"] . "'";
-    $result=mysqli_query($con, $sql);
-    $row=mysqli_fetch_row($result);
-
-    $_SESSION["level"]=$row[0];
-    $_SESSION["role_name"]=$row[1];
 
     mysqli_close($con);
   }
