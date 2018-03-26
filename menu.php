@@ -1,5 +1,6 @@
 <?php
   include_once 'logging.php';
+  include_once 'helpers.php';
 
   if(isset($_REQUEST["loginsubmit"])){
    
@@ -57,6 +58,11 @@
     <tr>
       <td valign=top>
         <a href="http://www.ilwc.nl/">ILWC</a>
+      </td>
+      <td valign=top>
+<?php
+  printf("<a href=\"http://www.ilwc.nl/detail.php?id=%s\">%s</a>",about_aid(),about_menu_text());
+?>
       </td>
       <td align=right>
         <form action="search.php" method="post">
