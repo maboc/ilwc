@@ -23,11 +23,12 @@
   }
 
   $sql="select   h.id, 
-                 a.title,
+                 left(a.title,50),
                  u.name,
                  h.what,
-                 h.address,
-                 h.wanneer
+                 left(h.address,50),
+                 h.wanneer,
+                 a.id
         from     history h
                  left join users u
                    on h.login_id=u.id
@@ -38,7 +39,7 @@
   $result=mysqli_query($con, $sql);
 
   while ($row=mysqli_fetch_row($result)){
-    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>", $row[0], $row[1],$row[2],$row[3],$row[4],$row[5]); 
+    printf("<tr><td>%s</td><td><a href=detail.php?id=%s>%s</a></td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>", $row[0], $row[6], $row[1],$row[2],$row[3],$row[4],$row[5]); 
   }
 
   mysqli_close($con);
