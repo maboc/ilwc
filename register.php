@@ -27,6 +27,7 @@
 
 <html>
   <head>
+    <link rel="icon" href="http://ilwc.nl/cross.ico">
     <title>
       ILWC
     </title>

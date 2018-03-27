@@ -79,6 +79,7 @@
 ?>
 <html>
   <head>
+    <link rel="icon" href="http://ilwc.nl/cross.ico">
     <script>
       function bodyVoorbeeld(){
         input=document.getElementById("body_veld");

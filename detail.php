@@ -35,6 +35,7 @@
 
 <html>
   <head>
+    <link rel="icon" href="http://ilwc.nl/cross.ico">
     <script>
       window.twttr = (
                        function(d, s, id) {

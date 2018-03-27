@@ -5,6 +5,7 @@
 
 <html>
   <head>
+    <link rel="icon" href="http://ilwc.nl/cross.ico">
     <script src="bieb.js" type="text/javascript"></script>
     <title>
       ILWC
