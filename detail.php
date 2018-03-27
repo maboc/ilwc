@@ -95,11 +95,13 @@
 
 
   printf("</table>");
-  printf("<a class=\"twitter-share-button\" href=\"https://twitter.com/intent/tweet?text=%s\" data-size=\"small\" />", $twitter);
+
+  printf("<a class=\"twitter-share-button\" href=\"https://twitter.com/intent/tweet?text=%s\" data-size=\"small\" ></a>", $twitter);
+
   printf("<br/><br/>");
   printf("<div align=\"center\">");
 
-  printf("<form action=\"detail.php\" method=\"post\">", $aid );
+  printf("<form action=\"detail.php\" method=\"post\">");
   printf("<input type=\"hidden\" name=\"id\" value=\"%s\"/>", $aid);
 ?>
         <textarea name="comment" cols=80 rows=5></textarea><br/>
