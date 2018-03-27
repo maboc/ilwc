@@ -1,5 +1,6 @@
 <?php
   include_once 'logging.php';
+  include_once 'helpers.php';
 
   if(isset($_REQUEST["loginsubmit"])){
    
@@ -58,6 +59,11 @@
       <td valign=top>
         <a href="http://www.ilwc.nl/">ILWC</a>
       </td>
+      <td valign=top>
+<?php
+  printf("<a href=\"http://www.ilwc.nl/detail.php?id=%s\">%s</a>",about_aid(),about_menu_text());
+?>
+      </td>
       <td align=right>
         <form action="search.php" method="post">
           <input type=text name=zoek_veld value="Zoek">
@@ -111,6 +117,7 @@ if ((isset($_SESSION["level"])) && ($_SESSION["level"]>=2)){
   <a href="users.php">Users</a>
   <a href="meta.php">Statistieken</a>
   <a href="zoektermen.php">Zoektermen</a>
+  <a href="config.php">Config</a>
 </div>
 <?php
 }
