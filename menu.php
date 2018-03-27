@@ -117,6 +117,7 @@ if ((isset($_SESSION["level"])) && ($_SESSION["level"]>=2)){
   <a href="users.php">Users</a>
   <a href="meta.php">Statistieken</a>
   <a href="zoektermen.php">Zoektermen</a>
+  <a href="config.php">Config</a>
 </div>
 <?php
 }
