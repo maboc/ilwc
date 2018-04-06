@@ -27,6 +27,15 @@
     do_log("comment toegevoegd");
   }
 
+  if(isset($_POST["disable_comment"])){
+    $cid=$_REQUEST["cid"];
+    $sql="update comments set published=false where id=" . $cid;
+
+    $result=mysqli_query($con, $sql);
+
+    do_log("comment " . $cid . "verwijderd");
+  }
+
   $sql="update articles set visits=visits+1 where id='" . $aid . "'";
   mysqli_query($con, $sql);
   mysqli_close($con);
@@ -129,7 +138,18 @@
 
   $result=mysqli_query($con, $sql);
   while($row=mysqli_fetch_array($result)){
-    printf("<tr><td>%s %s %s</td></tr><tr><td>%s</td></tr>", $row[0], $row[1], $row[3], $row[2]);
+    printf("<tr><td>%s %s %s</td></tr><tr><td>%s</td>", $row[0], $row[1], $row[3], $row[2]);
+
+    if(magditboolean(1)){
+      printf("<td>");
+      printf("<form method=post action=\"\">");
+      printf("<input type=hidden name=cid value=\"%s\" />", $row[0]);
+      printf("<input type=\"hidden\" name=\"id\" value=\"%s\" />", $aid);
+      printf("<input type=\"submit\" name=\"disable_comment\" value=\"wegermee\"/>");
+      printf("</form>");
+      printf("</td>");
+    }
+    printf("</tr>");
     printf("<tr><td>&nbsp;</td></tr>");
   } 
 ?>

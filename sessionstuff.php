@@ -12,7 +12,23 @@
       die("Je mag hier helemaal niet komen");
     }
   }
-  
+
+  function magditboolean($action_level){
+    if (! isset($_SESSION["level"])){
+      $session_level=0;
+    } else {
+      $session_level=$_SESSION["level"];
+    }
+
+    if ($action_level>$session_level) {
+      $rc=False;
+    } else {
+      $rc=True;
+    }
+
+   return $rc;
+  }  
+
   function zichtbaar($aid){
     $sql="select count(*) 
           from   articles 
