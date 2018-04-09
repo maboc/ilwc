@@ -1,6 +1,26 @@
 <?php
   include 'sessionstuff.php';
   magdit(2);
+  include_once 'logging.php';
+?>
+
+<?php
+  if(isset($_POST["deletehistory"])){
+
+    $daystodelete=$_POST["daystodelete"];
+    do_log("Deleting " . $daystodelete . " days worth of history");
+    
+    $sql="delete from history where wanneer<now()- interval " . $daystodelete . " day";
+    $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc");
+    if(! $con){
+      die("Foute boel" . mysqli_error($con));
+    }
+  
+    $result=mysqli_query($con, $sql);
+
+    mysqli_close($con);
+  }
+
 ?>
 
 <html>
@@ -13,9 +33,11 @@
   <body >
 <?php
   include 'menu.php';
-  include_once 'logging.php';
   do_log("Check history");
 ?>
+    <form method=POST action="">
+      Delete history older then <input type=text name=daystodelete value=10 /> Days .....<input type=submit name=deletehistory value="Delete"/>
+    </form>
     <table >
 <?php
   $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc");
