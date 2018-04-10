@@ -68,7 +68,8 @@
                  u.real_name,
                  a.published, 
                  a.visits,
-                 c.aantal,
+                 c1.aantal,
+                 c2.aantal,
                  a.zichtbaar_van,
                  a.zichtbaar_tot  
         from     articles a
@@ -78,9 +79,18 @@
                                select   article_id, 
                                         count(*) aantal 
                                from     comments 
+                               where    published=true
                                group by article_id
-                             ) c 
-                     on a.id=c.article_id
+                             ) c1 
+                     on a.id=c1.article_id
+                   left join (
+                               select   article_id,
+                                        count(*) aantal
+                               from     comments
+                               where    published=false
+                               group by article_id
+                             ) c2
+                     on a.id=c2.article_id
         order by creation_date desc";
   $result=mysqli_query($con, $sql);
 
@@ -94,11 +104,11 @@
               <td>%s</td>
               <td>%s</td>
               <td>%s</td>
-              <td>%s</td>
+              <td>%s / %s</td>
               <td>%s</td>
               <td>%s</td>
               <td><input type=submit name=\"delete_button\" value=\"Delete\"</td>
-           </tr>", $row[0], $row[0],$row[1],$row[2],$row[3],$row[4],$row[5],$row[6],$row[7],$row[8]); 
+           </tr>", $row[0], $row[0],$row[1],$row[2],$row[3],$row[4],$row[5],$row[6],$row[7],$row[8],$row[9]); 
     printf("</form>");
   }
 
