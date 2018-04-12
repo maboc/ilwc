@@ -1,4 +1,6 @@
 # ilwc
-In Love With Christ
+In Love With Computing
 
-My attempt of spreading the Gospel :-)
+Mostly mu external memory published on the internet.
+Maybe/Hopefully beneficla to somebode else besides me.
+
