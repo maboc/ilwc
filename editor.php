@@ -64,6 +64,8 @@
       $sql="insert into article_tag_link (article_id, tag_id) values('$aid', (select id from tags where lower(tag)=lower(trim('$tag'))))";
       mysqli_query($con, $sql);
     }
+
+    mysqli_close($con);
   } elseif(isset($_POST["update_submit"])) {
 
     $sql="update articles set title='" . $_POST["titel_veld"] . "',";
@@ -93,6 +95,8 @@
     $row=mysqli_fetch_row($result);
 
     $aid=$row[0];
+
+    mysqli_close($con);
   } else {
      if(isset($_REQUEST["id"])){
        $aid=$_REQUEST["id"];

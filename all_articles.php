@@ -11,6 +11,10 @@
 
     $aid=$_POST["id"];
 
+    do_log_no_aid("verwijder article tag links voor " . $aid);
+    $sql="delete from article_tag_link where article_id=" . $aid;
+    $r=mysqli_query($con, $sql);
+
     do_log_no_aid("delete comments for article " . $aid);
     $sql="delete from comments where article_id='" . $aid . "'";
     $r=mysqli_query($con, $sql);
