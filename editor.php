@@ -156,8 +156,8 @@
   $sql="select tag from tags t left join article_tag_link atl on atl.tag_id=t.id where atl.article_id=$aid";
   $res2=mysqli_query($con, $sql);
   $tags="";
-  while ($row=mysqli_fetch_row($res2)){
-    $tags.=$row[0] . ";";
+  while ($row2=mysqli_fetch_row($res2)){
+    $tags.=$row2[0] . ";";
   }
  
   $l=strlen($tags);
