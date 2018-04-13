@@ -5,14 +5,9 @@
 ?>
 
 <html>
-  <head>
-    <link rel="stylesheet" href="ilwc.css">
-    <link rel="icon" href="http://ilwc.nl/cross.ico">
-    <script src="bieb.js" type="text/javascript"></script>
-    <title>
-      ILWC
-    </title>
-  </head>
+<?php
+  include 'head.php';
+?>
   <body >
 <?php
   magdit(0);

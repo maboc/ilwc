@@ -91,26 +91,9 @@
   }
 ?>
 <html>
-  <head>
-    <link rel="icon" href="http://ilwc.nl/cross.ico">
-    <script>
-      function bodyVoorbeeld(){
-        input=document.getElementById("body_veld");
-        output=document.getElementById("bodyvoorbeeld");
-     
-        output.innerHTML=input.value;
-      } 
-      function samenvattingVoorbeeld(){
-        input=document.getElementById("samenvatting_veld");
-        output=document.getElementById("samenvattingvoorbeeld");
-     
-        output.innerHTML=input.value;
-      } 
-    </script>
-    <title>
-      ILWC
-    </title>
-  </head>
+<?php
+  include 'head.php';
+?>
   <body >
 <?php
   include 'menu.php';

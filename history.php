@@ -24,12 +24,9 @@
 ?>
 
 <html>
-  <head>
-    <link rel="icon" href="http://ilwc.nl/cross.ico">
-    <title>
-      ILWC
-    </title>
-  </head>
+<?php
+  include 'head.php';
+?>
   <body >
 <?php
   include 'menu.php';

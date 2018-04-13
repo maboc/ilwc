@@ -26,11 +26,10 @@
 ?>
 
 <html>
-  <head>
-    <title>
-      ILWC
-    </title>
-  </head>
+<?php
+  include 'head.php';
+?>
+  
   <body >
 <?php
 
