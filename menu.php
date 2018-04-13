@@ -98,7 +98,8 @@
 
 <!-- menu voor editors -->
 <?php
-if ((isset($_SESSION["level"])) && ($_SESSION["level"]>=1)){
+//if ((isset($_SESSION["level"])) && ($_SESSION["level"]>=1)){
+if(magditboolean(1)){
 ?>
 <div style="background-color:lightyellow;">
   <a href="all_articles.php">Alle artikelen</a>
@@ -110,7 +111,8 @@ if ((isset($_SESSION["level"])) && ($_SESSION["level"]>=1)){
 
 <!-- menu voor admins -->
 <?php
-if ((isset($_SESSION["level"])) && ($_SESSION["level"]>=2)){
+//if ((isset($_SESSION["level"])) && ($_SESSION["level"]>=2)){
+if(magditboolean(2)){
 ?>
 <div style="background-color:lightpink;">
   <a href="history.php">History</a>
