@@ -56,9 +56,42 @@
 <div style="background-color:lightblue;">
   <table width=100%>
     <tr>
+<!-- main menu -->
       <td valign=top>
         <a href="http://www.ilwc.nl/">ILWC</a>
       </td>
+<!-- tags menu -->
+      <td valign=top>
+        <div class=dropdown-menu>
+          Tags
+          <div class=dropdown-content>
+<?php
+  $sql="select   t.tag, 
+                 count(*) 
+        from     tags t 
+                   inner join article_tag_link atl 
+                     on t.id=atl.tag_id 
+                   left join articles a 
+                     on a.id=atl.article_id 
+        where    a.published=true 
+        group by t.tag";
+
+  $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc");
+    if(! $con){
+      die("Foute boel" . mysqli_error($con));
+    }
+
+  $result=mysqli_query($con, $sql);
+  while($row=mysqli_fetch_row($result)){
+    echo "<a href=index.php?list_type=tag&tag=$row[0]>$row[0] ($row[1])</a>";
+  }
+
+  mysqli_close($con);
+?>
+          </div>
+        </div>
+      </td>
+<!-- /about menu -->
       <td valign=top>
 <?php
   printf("<a href=\"http://www.ilwc.nl/detail.php?id=%s\">%s</a>",about_aid(),about_menu_text());
@@ -98,7 +131,8 @@
 
 <!-- menu voor editors -->
 <?php
-if ((isset($_SESSION["level"])) && ($_SESSION["level"]>=1)){
+//if ((isset($_SESSION["level"])) && ($_SESSION["level"]>=1)){
+if(magditboolean(1)){
 ?>
 <div style="background-color:lightyellow;">
   <a href="all_articles.php">Alle artikelen</a>
@@ -110,7 +144,8 @@ if ((isset($_SESSION["level"])) && ($_SESSION["level"]>=1)){
 
 <!-- menu voor admins -->
 <?php
-if ((isset($_SESSION["level"])) && ($_SESSION["level"]>=2)){
+//if ((isset($_SESSION["level"])) && ($_SESSION["level"]>=2)){
+if(magditboolean(2)){
 ?>
 <div style="background-color:lightpink;">
   <a href="history.php">History</a>
