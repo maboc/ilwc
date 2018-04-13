@@ -1,5 +1,6 @@
 <?php
   include 'sessionstuff.php';
+  include_once 'helpers.php';
   magdit(0);
 ?>
 
@@ -17,36 +18,24 @@
 
   include 'menu.php';
   include_once 'logging.php';
-  do_log("index opvrage");
+  do_log("index opvragen");
 ?>
     <table align="center" width="40%">
 <?php
-  $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc");
-  if(! $con){
-    die("Foute boel" . mysqli_error($con));
+  
+  if(isset($_REQUEST["list_type"])){
+    $list_type=$_REQUEST["list_type"];
+    if($list_type=="tag"){
+      if(isset($_REQUEST["tag"])){
+        $tag=$_REQUEST["tag"];
+        show_articles("tag", $tag);
+      } else {
+        echo "No tag given <br>";
+      }
+    }
+  } else {
+    show_articles("index", "");
   }
-
-  $sql="select   a.id, 
-                 a.title,
-                 a.samenvatting,
-                 a.image,
-                 u.real_name 
-        from     articles a
-                 left join users u
-                   on a.author_id=u.id
-        where    a.published=True
-                 and now() between a.zichtbaar_van and a.zichtbaar_tot
-        order by zichtbaar_van desc";
-  $result=mysqli_query($con, $sql);
-
-  while ($row=mysqli_fetch_row($result)){
-    printf("<tr><td><img src=\"%s\" height=\"50px\"/></td><td><a href=detail.php?id=%s>%s<br/>%s<br/>%s</a></td></tr>", $row[3], $row[0] ,$row[0],  $row[1], $row[4]); 
-    printf("<tr><td colspan=\"2\">%s</td></tr>", $row[2]);
-    printf("<tr><td colspan=\"2\">&nbsp;</td></tr>");
-  }
-
-  mysqli_close($con);
-
 ?>
     </table>
   </body>

@@ -99,7 +99,7 @@
 
   $tags="";
   while ($row2=mysqli_fetch_row($res2)){
-    $tags.=$row2[0] . " ";
+    $tags.="<a href=index.php?list_type=tag&tag=" . $row2[0] . ">" . $row2[0] . "</a> ";
   }
 
   while ($row=mysqli_fetch_row($result)){
