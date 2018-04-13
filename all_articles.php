@@ -68,8 +68,8 @@
                  u.real_name,
                  a.published, 
                  a.visits,
-                 c1.aantal,
-                 c2.aantal,
+                 ifnull(c1.aantal,'-'),
+                 ifnull(c2.aantal,'-'),
                  a.zichtbaar_van,
                  a.zichtbaar_tot  
         from     articles a
