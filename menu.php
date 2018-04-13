@@ -56,9 +56,42 @@
 <div style="background-color:lightblue;">
   <table width=100%>
     <tr>
+<!-- main menu -->
       <td valign=top>
         <a href="http://www.ilwc.nl/">ILWC</a>
       </td>
+<!-- tags menu -->
+      <td valign=top>
+        <div class=dropdown-menu>
+          Tags
+          <div class=dropdown-content>
+<?php
+  $sql="select   t.tag, 
+                 count(*) 
+        from     tags t 
+                   inner join article_tag_link atl 
+                     on t.id=atl.tag_id 
+                   left join articles a 
+                     on a.id=atl.article_id 
+        where    a.published=true 
+        group by t.tag";
+
+  $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc");
+    if(! $con){
+      die("Foute boel" . mysqli_error($con));
+    }
+
+  $result=mysqli_query($con, $sql);
+  while($row=mysqli_fetch_row($result)){
+    echo "<a href=index.php?list_type=tag&tag=$row[0]>$row[0] ($row[1])</a>";
+  }
+
+  mysqli_close($con);
+?>
+          </div>
+        </div>
+      </td>
+<!-- /about menu -->
       <td valign=top>
 <?php
   printf("<a href=\"http://www.ilwc.nl/detail.php?id=%s\">%s</a>",about_aid(),about_menu_text());
