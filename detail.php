@@ -94,14 +94,21 @@
 
   $result=mysqli_query($con, $sql);
 
+  $sql="select tag from tags t left join article_tag_link atl on atl.tag_id=t.id where atl.article_id=$aid";
+  $res2=mysqli_query($con, $sql);
+
+  $tags="";
+  while ($row2=mysqli_fetch_row($res2)){
+    $tags.="<a href=index.php?list_type=tag&tag=" . $row2[0] . ">" . $row2[0] . "</a> ";
+  }
+
   while ($row=mysqli_fetch_row($result)){
     $twitter=$row[1];
-    printf("<tr><td><img src=\"%s\" height=\"50px\"/></td><td>%s<br/>%s<br/>%s</td></tr>", $row[3], $row[0],  $row[1], $row[4]); 
+    printf("<tr><td><img src=\"%s\" height=\"50px\"/></td><td>%s<br/>%s<br/>%s<br/>%s</td></tr>", $row[3], $row[0],  $row[1], $row[4], $tags); 
     printf("<tr><td colspan=\"2\">%s</td></tr>", $row[2]);
   }
  
   mysqli_close($con);
-
 
   printf("</table>");
 

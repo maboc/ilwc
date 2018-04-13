@@ -5,10 +5,9 @@
 
 <?php
   include_once 'logging.php';
+  include_once 'helpers.php';
   do_log("Artikel editen");
-?>
 
-<?php
   if(isset($_POST["insert_submit"])) {
     $sql="insert into articles (title, image, author_id, creation_date, published, samenvatting, body, zichtbaar_van, zichtbaar_tot)";
     $sql.=" values ('" . $_POST["titel_veld"] . "',";
@@ -40,6 +39,13 @@
     $row=mysqli_fetch_row($result);
 
     $aid=$row[0];
+
+    if(isset($_POST["tags_veld"])){
+      $tags_veld=$_POST["tags_veld"];
+      process_tags($aid, $tags_veld);
+    }
+
+    mysqli_close($con);
   } elseif(isset($_POST["update_submit"])) {
 
     $sql="update articles set title='" . $_POST["titel_veld"] . "',";
@@ -69,6 +75,13 @@
     $row=mysqli_fetch_row($result);
 
     $aid=$row[0];
+
+    if(isset($_POST["tags_veld"])){
+      $tags_veld=$_POST["tags_veld"];
+      process_tags($aid, $tags_veld);
+    }
+
+    mysqli_close($con);
   } else {
      if(isset($_REQUEST["id"])){
        $aid=$_REQUEST["id"];
@@ -138,6 +151,19 @@
   printf("<tr><td>Zichtbaar van</td><td><input type=text name=zichtbaar_van_veld value=\"%s\" /></td></tr>",$row[8]); 
   printf("<tr><td>Zichtbaar tot</td><td><input type=text name=zichtbaar_tot_veld value=\"%s\" /></td></tr>",$row[9]); 
   printf("<tr><td>Gepubliceerd</td><td><input type=checkbox value=\"Gepubliceerd\" name=published_veld %s/></td></tr>", ($row[6]==1?"checked":""));
+  printf("<tr><td>Tags</td><td><input type=text name=tags_veld value=\"");
+
+  $sql="select tag from tags t left join article_tag_link atl on atl.tag_id=t.id where atl.article_id=$aid";
+  $res2=mysqli_query($con, $sql);
+  $tags="";
+  while ($row2=mysqli_fetch_row($res2)){
+    $tags.=$row2[0] . ";";
+  }
+ 
+  $l=strlen($tags);
+  $tags=substr($tags, 0, $l-1);
+ 
+  printf("%s\"/></td></tr>", $tags);
   printf("<tr><td>Samenvatting</td><td><textarea name=samenvatting_veld id=\"samenvatting_veld\" rows=25 cols=100 onkeyup=\"samenvattingVoorbeeld();\">%s</textarea></td><td><div id=samenvattingvoorbeeld></div></td></tr>", $row[7]);
   printf("<tr><td>Body</td><td><textarea rows=50 cols=100 onkeyup=\"bodyVoorbeeld();\" name=\"body_veld\" id=\"body_veld\">%s</textarea></td><td><div id=\"bodyvoorbeeld\"></div></td></tr>", $row[2]);
   if(! empty($aid)){
