@@ -153,6 +153,7 @@ if(magditboolean(2)){
   <a href="meta.php">Statistieken</a>
   <a href="zoektermen.php">Zoektermen</a>
   <a href="config.php">Config</a>
+  <a href="bans.php">Bans</a>
 </div>
 <?php
 }
