@@ -1,5 +1,35 @@
 <?php
   session_start();
+  
+  function banned(){
+    $rc=false;
+    $client  = isset($_SERVER['HTTP_CLIENT_IP'])?$_SERVER['HTTP_CLIENT_IP']:"";
+    $forward = isset($_SERVER['HTTP_X_FORWARDED_FOR'])?$_SERVER['HTTP_X_FORWARDED_FOR']:"";
+    $remote  = isset($_SERVER['REMOTE_ADDR'])?$_SERVER['REMOTE_ADDR']:"";
+   
+    $sql="select count(*) from bans where adres='$client' or adres='$forward' or adres='$remote'";
+
+    $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc");
+    if(! $con){
+      echo "voor<br>";
+      die("Foute boel" . mysqli_error($con));
+      echo "na<br>";
+    }
+    
+    $result=mysqli_query($con, $sql);
+    $row=mysqli_fetch_row($result);
+    mysqli_close($con);
+
+    if($row[0]>0){
+      $rc=true;
+    }
+  
+    return $rc; 
+  }
+
+  if(banned()){
+    die("You are banned");
+  }
 
   function magdit($page_level){
   if (! isset($_SESSION["level"])){
