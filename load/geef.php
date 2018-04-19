@@ -7,7 +7,7 @@
   $van=isset($_REQUEST["van"])?$_REQUEST["van"]:'-';
   $naar=isset($_REQUEST["naar"])?$_REQUEST["naar"]:'-'; 
 
-  $sql="insert into loads(van, naar) values ('$van','$naar')";
+  $sql="insert into loads(van, naar, datum) values ('$van','$naar', now())";
 
   mysqli_query($con, $sql);
 
