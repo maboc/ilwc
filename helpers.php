@@ -117,6 +117,8 @@
 
   function sanitize($inp){
     $terug=str_replace("'", "&apos;", $inp);
+    $terug=str_replace("<<", "&lt;", $terug);
+    $terug=str_replace(">>", "&gt;", $terug);
     return $terug;
   }
 ?>
