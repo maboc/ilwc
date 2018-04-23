@@ -113,4 +113,10 @@
 
     mysqli_close($con);
   }
+
+
+  function sanitize($inp){
+    $terug=str_replace("'", "&apos;", $inp);
+    return $terug;
+  }
 ?>
