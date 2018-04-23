@@ -9,17 +9,22 @@
   do_log("Artikel editen");
 
   if(isset($_POST["insert_submit"])) {
+    $samenvatting=$_POST["samenvatting_veld"];
+    $samenvatting=sanitize($samenvatting);
+
+    $body=$_POST["body_veld"];
+    $body=sanitize($body);
+
     $sql="insert into articles (title, image, author_id, creation_date, published, samenvatting, body, zichtbaar_van, zichtbaar_tot)";
     $sql.=" values ('" . $_POST["titel_veld"] . "',";
     $sql .="        '" .  $_POST["image_veld"] . "',";
     $sql .="        (select id from users where name='" .  $_SESSION["user"] . "'),";
     $sql .="        now(), ";
     $sql .=         ((isset($_POST["published_veld"])) && (! empty($_POST["published_veld"]))?"true":"false") . ",";
-    $sql .="        '" . $_POST["samenvatting_veld"] . "',";
-    $sql .="        '" .  $_POST["body_veld"] . "',";
+    $sql .="        '" . $samenvatting . "',";
+    $sql .="        '" .  $body . "',";
     $sql .="        '" . $_POST["zichtbaar_van_veld"] . "',";
     $sql .="        '" . $_POST["zichtbaar_tot_veld"] . "')";
-
 
     $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc");
     if(! $con){
@@ -32,8 +37,8 @@
     $sql.="where title='" . $_POST["titel_veld"] . "'";
     $sql.="      and image='" . $_POST["image_veld"] . "'";
     $sql.="      and author_id=(select id from users where name='" .  $_SESSION["user"] . "')";
-    $sql.="      and samenvatting='" . $_POST["samenvatting_veld"] . "'";
-    $sql.="      and body='" .  $_POST["body_veld"] . "'"; 
+    $sql.="      and samenvatting='" . $samenvatting . "'";
+    $sql.="      and body='" .  $body . "'"; 
 
     $result=mysqli_query($con, $sql);
     $row=mysqli_fetch_row($result);
@@ -47,12 +52,17 @@
 
     mysqli_close($con);
   } elseif(isset($_POST["update_submit"])) {
+    $samenvatting=$_POST["samenvatting_veld"];
+    $samenvatting=sanitize($samenvatting);
+
+    $body=$_POST["body_veld"];
+    $body=sanitize($body);
 
     $sql="update articles set title='" . $_POST["titel_veld"] . "',";
     $sql.="                   image='" .  $_POST["image_veld"] . "',";
     $sql.="                   published=" . ((isset($_POST["published_veld"])) && (! empty($_POST["published_veld"]))?"true":"false") . ",";
-    $sql.="                   samenvatting='" . $_POST["samenvatting_veld"] . "',";
-    $sql.="                   body='" .  $_POST["body_veld"] . "', ";
+    $sql.="                   samenvatting='" . $samenvatting . "',";
+    $sql.="                   body='" .  $body . "', ";
     $sql.="                   zichtbaar_van='" . $_POST["zichtbaar_van_veld"] . "',";
     $sql.="                   zichtbaar_tot='" . $_POST["zichtbaar_tot_veld"] . "' ";
     $sql.="where id=" . $_POST["id_veld"]; 
@@ -68,8 +78,8 @@
     $sql.="where title='" . $_POST["titel_veld"] . "'"; 
     $sql.="      and image='" . $_POST["image_veld"] . "'"; 
     $sql.="      and author_id=(select id from users where name='" .  $_SESSION["user"] . "')"; 
-    $sql.="      and samenvatting='" . $_POST["samenvatting_veld"] . "'"; 
-    $sql.="      and body='" .  $_POST["body_veld"] . "'"; 
+    $sql.="      and samenvatting='" . $samenvatting . "'"; 
+    $sql.="      and body='" .  $body . "'"; 
 
     $result=mysqli_query($con, $sql);
     $row=mysqli_fetch_row($result);
