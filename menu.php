@@ -91,6 +91,10 @@
           </div>
         </div>
       </td>
+<!-- What's loading menu -->
+      <td>
+        <a href=whatsloading.php>What is loading</a>
+      </td>
 <!-- /about menu -->
       <td valign=top>
 <?php
