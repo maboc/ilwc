@@ -14,7 +14,6 @@
 
   include 'menu.php';
   include_once 'logging.php';
-  do_log("whats loading");
 
   $van=$_REQUEST["van_veld"];
   $van=sanitize($van);
@@ -27,6 +26,8 @@
   if(empty($naar)){
     $naar="---";
   }
+
+  do_log("whats loading van :" . $van . " naar : " . $naar);
 
   $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc");
   if(! $con){

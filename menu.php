@@ -92,7 +92,7 @@
         </div>
       </td>
 <!-- What's loading menu -->
-      <td>
+      <td valign=top>
         <a href=whatsloading.php>What is loading</a>
       </td>
 <!-- /about menu -->
