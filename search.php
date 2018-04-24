@@ -14,6 +14,7 @@
   include 'menu.php';
   include_once 'logging.php';
   $zoeker=$_REQUEST["zoek_veld"];
+  $zoeker=sanitize($zoeker);
   do_log("Search opgeroepen : " . $zoeker);
 
 ?>
