@@ -95,7 +95,13 @@
       <td valign=top>
         <a href=whatsloading.php>What is loading</a>
       </td>
-<!-- /about menu -->
+<!-- Privacy menu -->
+      <td valign=top>
+<?php
+  printf("<a href=\"http://www.ilwc.nl/detail.php?id=%s\">%s</a>",privacy_aid(),privacy_menu_text());
+?>
+      </td>
+<!-- about menu -->
       <td valign=top>
 <?php
   printf("<a href=\"http://www.ilwc.nl/detail.php?id=%s\">%s</a>",about_aid(),about_menu_text());
