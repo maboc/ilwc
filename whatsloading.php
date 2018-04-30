@@ -40,10 +40,14 @@
           <td valign=top>
             <table>
               <tr>
-                <td colspan=2><input type=text name=van_veld value=
+                <td colspan=2>
+                  <input type=text name=van_veld value=
 <?php
   echo $van;
-?>>                           <input type=submit value=submit></td>
+?>>               <input type=submit value=submit>
+                  <hr>
+                  Triggers requests to:
+                </td>
               </tr>
             
 <?php
@@ -66,12 +70,16 @@
           <td valign=top>
             <table>
               <tr>
-                <td colspan=2><input type=text name=naar_veld value=
+                <td colspan=2>
+                  <input type=text name=naar_veld value=
 <?php
   echo $naar;
 ?>>
-                              <input type=submit value=submit></td>
-              </tr>
+                 <input type=submit value=submit>
+                 <hr>
+                 Gets requested by:
+              </td>
+            </tr>
 
 <?php
   $sql2="select   van,
