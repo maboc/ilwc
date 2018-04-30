@@ -151,7 +151,7 @@
   function sanitize($inp){
     $terug=str_replace("'", "&apos;", $inp);
     $a=str_replace("<<", "&#60;", $terug);
-    $b=str_replace(">>", "&gt;", $a);
+    $b=str_replace(">>", "&#62;", $a);
     return $b;
   }
 ?>
