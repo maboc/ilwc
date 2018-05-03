@@ -147,6 +147,7 @@ if(magditboolean(1)){
 <div style="background-color:lightyellow;">
   <a href="all_articles.php">Alle artikelen</a>
   <a href="editor.php">New Article</a>
+  <a href="upload.php">Upload</a>
 </div>
 <?php
 }
