@@ -4,7 +4,7 @@
   magdit(2);
 
   if(isset($_POST["change_button"])) {
-    $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc");
+    $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc", 3307);
     if(! $con){
       die("Foute boel" . mysqli_error($con));
     }
@@ -46,7 +46,7 @@
       </tr>
     </thead>
 <?php
-  $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc");
+  $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc", 3307);
   if(! $con){
     die("Foute boel" . mysqli_error($con));
   }

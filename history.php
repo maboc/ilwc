@@ -11,7 +11,7 @@
     do_log("Deleting " . $daystodelete . " days worth of history");
     
     $sql="delete from history where wanneer<now()- interval " . $daystodelete . " day";
-    $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc");
+    $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc", 3307);
     if(! $con){
       die("Foute boel" . mysqli_error($con));
     }
@@ -37,7 +37,7 @@
     </form>
     <table >
 <?php
-  $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc");
+  $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc", 3307);
   if(! $con){
     die("Foute boel" . mysqli_error($con));
   }

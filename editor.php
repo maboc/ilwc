@@ -26,7 +26,7 @@
     $sql .="        '" . $_POST["zichtbaar_van_veld"] . "',";
     $sql .="        '" . $_POST["zichtbaar_tot_veld"] . "')";
 
-    $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc");
+    $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc", 3307);
     if(! $con){
       die("Foute boel" . mysqli_error($con));
     }
@@ -67,7 +67,7 @@
     $sql.="                   zichtbaar_tot='" . $_POST["zichtbaar_tot_veld"] . "' ";
     $sql.="where id=" . $_POST["id_veld"]; 
 
-    $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc");
+    $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc", 3307);
     if(! $con){
       die("Foute boel" . mysqli_error($con));
     }
@@ -109,7 +109,7 @@
   include 'menu.php';
 ?>
 <?php
-  $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc");
+  $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc", 3307);
   if(! $con){
     die("Foute boel" . mysqli_error($con));
   }

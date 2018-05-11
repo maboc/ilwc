@@ -4,7 +4,7 @@
 
   if(isset($_REQUEST["loginsubmit"])){
    
-    $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc");
+    $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc", 3307);
     if(! $con){
       die("Foute boel" . mysqli_error($con));
     }
@@ -76,7 +76,7 @@
         where    a.published=true 
         group by t.tag";
 
-  $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc");
+  $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc", 3307);
     if(! $con){
       die("Foute boel" . mysqli_error($con));
     }
@@ -147,6 +147,7 @@ if(magditboolean(1)){
 <div style="background-color:lightyellow;">
   <a href="all_articles.php">Alle artikelen</a>
   <a href="editor.php">New Article</a>
+  <a href="upload.php">Upload</a>
 </div>
 <?php
 }
