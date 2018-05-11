@@ -21,10 +21,22 @@
     $van="---";
   }
 
+  $van_dagen=$_REQUEST["van_dagen_veld"];
+  $van_dagen=sanitize($van_dagen);
+  if(empty($van_dagen)){
+    $van_dagen=1;
+  }
+
   $naar=$_REQUEST["naar_veld"];
   $naar=sanitize($naar);
   if(empty($naar)){
     $naar="---";
+  }
+
+  $naar_dagen=$_REQUEST["naar_dagen_veld"];
+  $naar_dagen=sanitize($naar_dagen);
+  if(empty($naar_dagen)){
+    $naar_dagen=1;
   }
 
   do_log("whats loading van :" . $van . " naar : " . $naar);
@@ -44,7 +56,11 @@
                   <input type=text name=van_veld value=
 <?php
   echo $van;
-?>>               <input type=submit value=submit>
+?>>               <input type=submit value=submit><br>
+                  In last <input type=text name=van_dagen_veld value=
+<?php
+  echo $van_dagen;
+?> size=5> days. 
                   <hr>
                   Triggers requests to:
                 </td>
@@ -56,6 +72,7 @@
          from     b
          where    van!=naar
                   and van like '%" . $van . "%'
+                  and datum>now() - interval $van_dagen day
          group by naar
          order by 2 desc";
 
@@ -75,7 +92,12 @@
 <?php
   echo $naar;
 ?>>
-                 <input type=submit value=submit>
+                 <input type=submit value=submit><br>
+                 In last <input type=text name=naar_dagen_veld value=
+<?php
+  echo $naar_dagen;
+?>
+ size=5> days. 
                  <hr>
                  Gets requested by:
               </td>
@@ -87,6 +109,7 @@
          from     b
          where    van!=naar
                   and naar like '%" . $naar . "%'
+                  and datum>now() - interval $naar_dagen day
          group by van
          order by 2 desc";
 
