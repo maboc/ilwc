@@ -9,7 +9,7 @@
    
     $sql="select count(*) from bans where adres='$client' or adres='$forward' or adres='$remote'";
 
-    $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc");
+    $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc", 3307);
     if(! $con){
       echo "voor<br>";
       die("Foute boel" . mysqli_error($con));
@@ -65,7 +65,7 @@
           where  id='" . $aid . "' 
                  and published=true";  
 
-    $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc");
+    $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc", 3307);
     if(! $con){
       die("Foute boel" . mysqli_error($con));
     }

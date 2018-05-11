@@ -4,7 +4,7 @@
   magdit(2);
 
   if(isset($_POST["submit_ban"])) {
-    $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc");
+    $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc", 3307);
     if(! $con){
       die("Foute boel" . mysqli_error($con));
     }
@@ -19,7 +19,7 @@
   }
 
   if(isset($_POST["release_ban"])) {
-    $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc");
+    $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc", 3307);
     if(! $con){
       die("Foute boel" . mysqli_error($con));
     }
@@ -59,7 +59,7 @@
         <td></td><td><input type=text name=adres_veld /></td><td><input type=text name=reden_veld /></td><td><input type=submit name=submit_ban value=voegtoe /></td></tr>
       </form>
 <?php
-  $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc");
+  $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc", 3307);
   if(! $con){
     die("Foute boel" . mysqli_error($con));
   }

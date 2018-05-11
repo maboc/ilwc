@@ -4,7 +4,7 @@
           from   config
           where  lower(item) = lower('privacy_article')";
 
-    $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc");
+    $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc", 3307);
     if(! $con){
       die("Foute boel" . mysqli_error($con));
     }
@@ -21,7 +21,7 @@
           from   config
           where  lower(item) = lower('privacy_menu_text')";
 
-    $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc");
+    $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc", 3307);
     if(! $con){
       die("Foute boel" . mysqli_error($con));
     }
@@ -37,7 +37,7 @@
           from   config 
           where  lower(item) = lower('about')";  
 
-    $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc");
+    $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc", 3307);
     if(! $con){
       die("Foute boel" . mysqli_error($con));
     }
@@ -54,7 +54,7 @@
           from   config
           where  lower(item) = lower('about_menu_text')";
 
-    $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc");
+    $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc", 3307);
     if(! $con){
       die("Foute boel" . mysqli_error($con));
     }
@@ -66,7 +66,7 @@
   }
 
   function process_tags($aid, $tags_veld){
-    $con2=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc");
+    $con2=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc", 3307);
     if(! $con2){
       die("Foute boel" . mysqli_error($con));
     }
@@ -132,7 +132,7 @@
     }
     
 
-    $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc");
+    $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc", 3307);
     if(! $con){
       die("Foute boel" . mysqli_error($con));
     }

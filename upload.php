@@ -16,7 +16,7 @@
 
     $sql="insert into documents (naam, locatie, w, h, datum) values('" . sanitize($_REQUEST["naam_veld"]) . "', '$target',  '" . sanitize($_REQUEST["w_veld"]) . "', '" . $_REQUEST["h_veld"] . "', now())";
     
-    $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc");
+    $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc", 3307);
     if(! $con){
       die("Foute boel" . mysqli_error($con));
     }
@@ -58,7 +58,7 @@
       </tr>
 
 <?php
-  $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc");
+  $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc", 3307);
   if(! $con){
     die("Foute boel" . mysqli_error($con));
   }

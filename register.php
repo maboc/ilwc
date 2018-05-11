@@ -11,7 +11,7 @@
   if(isset($_POST["register_submit"])){
     do_log("Try to register : " . $_POST["naam_veld"] . "/" . $_POST["echte_naam_veld"]);
 
-    $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc");
+    $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc",3307);
     if(! $con){
       die("Foute boel" . mysqli_error($con));
     }
