@@ -19,10 +19,40 @@
     die("Foute boel" . mysqli_error($con));
   }
 
+  printf("<table>");
+  printf("<tr><td>Item</td><td>Total</td><td>Per dag (gemiddeld)</td></tr>");
+
   $sql="select count(*) from history";
   $result=mysqli_query($con, $sql);
   $row=mysqli_fetch_row($result);
-  printf("Total number of lines in history : %s", $row[0]);
+  $hist=$row[0];
+
+  $sql="select count(*) from (select date(wanneer) from history group by date(wanneer))d";
+  $result=mysqli_query($con, $sql);
+  $row=mysqli_fetch_row($result);
+  $days=$row[0];
+
+  printf("<tr><td>Lines in history</td><td> %s</td><td>%s</td></tr>", $hist, round($hist/$days));
+  printf("<tr><td>Days in history</td><td> %s</td><td>%s</td></tr>", $days, round($days/$days));
+
+  $sql="select count(*) from loads";
+  $result=mysqli_query($con, $sql);
+  $row=mysqli_fetch_row($result);
+  $loads=$row[0];
+
+
+  $sql="select count(*) from (select date(datum) from loads group by date(datum))d";
+  $result=mysqli_query($con, $sql);
+  $row=mysqli_fetch_row($result);
+  $days=$row[0];
+
+  printf("<tr><td>Lines in loads</td><td> %s</td><td>%s</td></tr>", $loads, round($loads/$days));
+  printf("<tr><td>Days in loads</td><td> %s</td><td>%s</td></tr>", $days, round($days/$days));
+
+
+
+
+  printf("</table>");
   printf("<br><br>");
 
   $sql="select   date(wanneer), 
