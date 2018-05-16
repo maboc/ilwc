@@ -82,7 +82,13 @@
 
   while ($row=mysqli_fetch_row($result)){
     $twitter=$row[1];
-    printf("<tr><td><img src=\"%s\" height=\"50px\"/></td><td>%s<br/>%s<br/>%s<br/>%s</td></tr>", $row[3], $row[0],  $row[1], $row[4], $tags); 
+    printf("<tr><td><img src=\"%s\" height=\"50px\"/></td><td>", $row[3]);
+    if(magditboolean(1)){
+      printf("<a href=/editor.php?id=%s>%s</a>", $row[0], $row[0]);
+    } else {
+      printf("%s", $row[0]);
+    }
+    printf("<br/>%s<br/>%s<br/>%s</td></tr>", $row[1], $row[4], $tags); 
     printf("<tr><td colspan=\"2\">%s</td></tr>", $row[2]);
   }
  
