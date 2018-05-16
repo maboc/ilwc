@@ -98,7 +98,7 @@
     printf("<form action=\"\" method=\"post\">");
     printf("<input type=hidden name=\"id\" value=\"" . $row[0] . "\">");
     printf("<tr>
-              <td>%s</td>
+              <td><a href=/detail.php?id=%s>%s</a></td>
               <td><a href=/editor.php?id=%s>%s</a></td>
               <td><img src=\"%s\" width=\"25px\"/></td>
               <td>%s</td>
@@ -108,7 +108,7 @@
               <td>%s</td>
               <td>%s</td>
               <td><input type=submit name=\"delete_button\" value=\"Delete\"</td>
-           </tr>", $row[0], $row[0],$row[1],$row[2],$row[3],$row[4],$row[5],$row[6],$row[7],$row[8],$row[9]); 
+           </tr>", $row[0], $row[0],$row[0],$row[1],$row[2],$row[3],$row[4],$row[5],$row[6],$row[7],$row[8],$row[9]); 
     printf("</form>");
   }
 
