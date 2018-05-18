@@ -67,13 +67,13 @@
               </tr>
             
 <?php
-  $sql1="select   naar,
+  $sql1="select   naar_domein,
                   count(*)
-         from     b
-         where    van!=naar
-                  and van like '%" . $van . "%'
+         from     loads
+         where    van_domein!=naar_domein
+                  and van_domein like '%" . $van . "%'
                   and datum>now() - interval $van_dagen day
-         group by naar
+         group by naar_domein
          order by 2 desc";
 
   $res1=mysqli_query($con, $sql1);
@@ -104,13 +104,13 @@
             </tr>
 
 <?php
-  $sql2="select   van,
+  $sql2="select   van_domein,
                   count(*)
-         from     b
-         where    van!=naar
-                  and naar like '%" . $naar . "%'
+         from     loads
+         where    van_domein!=naar_domein
+                  and naar_domein like '%" . $naar . "%'
                   and datum>now() - interval $naar_dagen day
-         group by van
+         group by van_domein
          order by 2 desc";
 
   $res1=mysqli_query($con, $sql2);
