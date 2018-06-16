@@ -74,7 +74,9 @@
                    left join articles a 
                      on a.id=atl.article_id 
         where    a.published=true 
-        group by t.tag";
+        group by t.tag
+        order by count(*) desc,
+                 t.tag";
 
   $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc", 3307);
     if(! $con){

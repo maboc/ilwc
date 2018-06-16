@@ -126,7 +126,7 @@
                      left join tags t
                        on t.id=atl.tag_id
             where    a.published=True
-                     and now() between a.zichtbaar_van and a.zichtbaar_tot
+                     -- and now() between a.zichtbaar_van and a.zichtbaar_tot
                      and t.tag='$p1'  
             order by zichtbaar_van desc"; 
     }
