@@ -152,6 +152,7 @@
     $terug=str_replace("'", "&apos;", $inp);
     $a=str_replace("<<", "&#60;", $terug);
     $b=str_replace(">>", "&#62;", $a);
-    return $b;
+    $c=str_replace("\", "&#92;", $b);
+    return $c;
   }
 ?>
