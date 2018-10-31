@@ -99,7 +99,7 @@
     mysqli_close($con2);
   }
 
-  function show_articles($list_type, $p1){
+  function show_articles($list_type, $p1, $p2){
     if ($list_type=="index"){
       $sql="select   a.id,
                      a.title,
@@ -129,6 +129,20 @@
                      -- and now() between a.zichtbaar_van and a.zichtbaar_tot
                      and t.tag='$p1'  
             order by zichtbaar_van desc"; 
+    } elseif($list_type=="year_month") {
+      $sql="select   a.id,
+                     a.title,
+                     a.samenvatting,
+                     a.image,
+                     u.real_name
+            from     articles a
+                     left join users u
+                       on a.author_id=u.id
+            where    a.published=True
+                     -- and now() between a.zichtbaar_van and a.zichtbaar_tot
+                     and year(a.creation_date)=$p1
+                     and month(a.creation_date)=$p2
+            order by zichtbaar_van desc";
     }
     
 
