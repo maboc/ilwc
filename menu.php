@@ -93,6 +93,37 @@
           </div>
         </div>
       </td>
+<!-- Year-Month menu -->
+      <td valign=top>
+        <div class=dropdown-menu>
+          Month-Year
+          <div class=dropdown-content>
+<?php
+  $sql="select   YEAR(creation_date), 
+                 MONTH(creation_date),
+                 count(*) 
+        from     articles 
+        group by YEAR(creation_date), 
+                 MONTH(Creation_date) 
+        order by year(creation_date),
+                 month(creation_date)";
+
+  $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc", 3307);
+    if(! $con){
+      die("Foute boel" . mysqli_error($con));
+    }
+
+  $result=mysqli_query($con, $sql);
+  while($row=mysqli_fetch_row($result)){
+    echo "<a href=index.php?list_typ=year_month&y=$row[0]&m=$row[1]>$row[0] - $row[1] ($row[2])</a>";
+  }
+
+  mysqli_close($con);
+?>
+          </div>
+        </div>
+
+      </td>
 <!-- What's loading menu -->
       <td valign=top>
         <a href=whatsloading.php>What is loading</a>
