@@ -115,7 +115,7 @@
 
   $result=mysqli_query($con, $sql);
   while($row=mysqli_fetch_row($result)){
-    echo "<a href=index.php?list_typ=year_month&y=$row[0]&m=$row[1]>$row[0] - $row[1] ($row[2])</a>";
+    echo "<a href=index.php?list_type=year_month&y=$row[0]&m=$row[1]>$row[0] - $row[1] ($row[2])</a>";
   }
 
   mysqli_close($con);
