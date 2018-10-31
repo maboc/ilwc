@@ -105,8 +105,8 @@
         from     articles 
         group by YEAR(creation_date), 
                  MONTH(Creation_date) 
-        order by year(creation_date),
-                 month(creation_date)";
+        order by year(creation_date) desc,
+                 month(creation_date) desc";
 
   $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc", 3307);
     if(! $con){
