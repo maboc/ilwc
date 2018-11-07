@@ -63,7 +63,10 @@
                  a.title,
                  a.body,
                  a.image,
-                 u.name
+                 u.name,
+                 a.creation_date,
+                 a.zichtbaar_van,
+                 a.zichtbaar_tot
         from     articles a
                  left join users u
                    on a.author_id=u.id
@@ -88,8 +91,9 @@
     } else {
       printf("%s", $row[0]);
     }
-    printf("<br/>%s<br/>%s<br/>%s</td></tr>", $row[1], $row[4], $tags); 
-    printf("<tr><td colspan=\"2\">%s</td></tr>", $row[2]);
+    printf("<br/>%s<br/>%s<br/>%s</td>", $row[1], $row[4], $tags);
+    printf("<td style=\"font-size:x-small; text-align: left;\">%s<br/>%s</br>%s</td></tr>", $row[5], $row[6], $row[7]);
+    printf("<tr><td colspan=\"3\">%s</td></tr>", $row[2]);
   }
  
   mysqli_close($con);
