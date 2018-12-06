@@ -125,9 +125,15 @@
 
       </td>
 <!-- What's loading menu -->
+<?php
+  if(show_whats_loading()==TRUE){
+  ?>
       <td valign=top>
         <a href=whatsloading.php>What is loading</a>
       </td>
+  <?php
+  }
+?>
 <!-- Privacy menu -->
       <td valign=top>
 <?php

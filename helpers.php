@@ -1,4 +1,26 @@
 <?php
+  function show_whats_loading(){
+    $sql="select lower(string_waarde)
+          from   config 
+          where  lower(item)=lower('enable_whats_loading')";
+	  
+    $con=mysqli_connect("192.168.2.110", "ilwc", "ilwc", "ilwc", 3307);
+    if(! $con){
+      die("Foute boel" . mysqli_error($con));
+    }
+
+    $result=mysqli_query($con, $sql);
+    $row=mysqli_fetch_row($result);
+
+    if($row[0]=='no'){
+      $rc=FALSE;
+    } else {
+      $rc=TRUE;
+    }
+
+    return $rc;
+  }
+
   function privacy_aid(){
     $sql="select int_waarde
           from   config
